@@ -18,12 +18,13 @@ const Hero = () => {
 
   return (
     <div className="container mx-auto 2xl:px-20 my-10">
-      <div className="bg-gradient-to-r from-purple-700 to-purple-950 text-white py-16 text-center mx-2 rounded-xl">
+      <div className="bg-gradient-to-r from-gray-400 to-gray-700 text-white py-16 text-center mx-2 rounded-xl">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-4">
-          Over 100+ jobs to apply
+          On - Campus Placement
         </h2>
         <p className="mb-8 max-w-xl mx-auto text-sm font-light px-5">
-          Your Next Big Career Move Starts Right Here - Explore The Best Job Opportunities And Take The First Step Toward Your Future!
+          You can find your carear start company and may bright your future!
+          Best Wishes...
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-between bg-white rounded text-gray-600 max-w-xl pl-4 mx-4 sm:mx-auto">
@@ -53,18 +54,6 @@ const Hero = () => {
           >
             Search
           </button>
-        </div>
-      </div>
-
-      <div className="border border-gray-300 shadow-md mx-2 mt-5 p-6 rounded-md">
-        <div className="flex justify-center gap-10 lg:gap-16 flex-wrap items-center">
-          <p className="font-medium">Trusted by</p>
-          <img className="h-6" src={assets.microsoft_logo} alt="Microsoft" />
-          <img className="h-6" src={assets.walmart_logo} alt="Walmart" />
-          <img className="h-6" src={assets.accenture_logo} alt="Accenture" />
-          <img className="h-6" src={assets.samsung_logo} alt="Samsung" />
-          <img className="h-6" src={assets.amazon_logo} alt="Amazon" />
-          <img className="h-6" src={assets.adobe_logo} alt="Adobe" />
         </div>
       </div>
     </div>
