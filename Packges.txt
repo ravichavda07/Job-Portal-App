@@ -1,0 +1,20 @@
+npm create vite@latest
+npm install
+npm install axios react-router-dom react-toastify
+npm run dev
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+
+
+
+npm i express ------> create server
+npm i jsonwebtoken -> use for authentication
+npm i bcrypt -------> use for incrypt the user's password
+npm i mongoose -----> connect with mongodb database
+      nodemon ------> use for start server
+      svix  --------> manage cleck authentication web hooks
+npm i cors ---------> help to manage multiple origin
+      multer -------> help to manage form data
+      dotenv -------> manage to environment variable
+      cloudinary ---> store resume in cloudinary platform
