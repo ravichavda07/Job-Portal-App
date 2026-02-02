@@ -1,4 +1,3 @@
-import React from 'react'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
@@ -7,6 +6,7 @@ import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useEffect } from 'react'
+import Loading from '../components/Loading'
 
 const ManageJobs = () => {
 

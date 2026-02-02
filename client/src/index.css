@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 *{
-    font-family: Outfit;
+    /* font-family: Outfit; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 @layer base{

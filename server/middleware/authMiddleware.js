@@ -1,10 +1,13 @@
 import jwt from 'jsonwebtoken'
 import Company from '../models/Company.js'
 
-export const protectCompany = async (req, res, next) => {
+// Middleware ( Protect Company Routes )
+export const protectCompany = async (req,res,next) => {
 
+    // Getting Token Froms Headers
     const token = req.headers.token
 
+    
     if (!token) {
         return res.json({ success:false, message:'Not authorized, Login Again'})
     }
@@ -18,7 +21,7 @@ export const protectCompany = async (req, res, next) => {
         next()
 
     } catch (error) {
-        res.json({success:false, message:error.message})
+        res.json({success:false, message: error.message})
     }
 
 }

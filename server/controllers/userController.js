@@ -1,66 +1,49 @@
+import Job from "../models/Job.js"
 import JobApplication from "../models/JobApplication.js"
 import User from "../models/User.js"
 import { v2 as cloudinary } from "cloudinary"
 
-// Get user data
-export const getUserData = async(req, res) => {
-    const userId = req.auth.userId;
+// Get User Data
+export const getUserData = async (req, res) => {
+
+    const userId = req.auth.userId
 
     try {
-        let user = await User.findById(userId);
 
-        // If user not found, try to create from Clerk data
-        if (!user) {
-            const clerkUser = await fetch(`https://api.clerk.com/v1/users/${userId}`, {
-                headers: {
-                    'Authorization': `Bearer ${process.env.CLERK_SECRET_KEY}`,
-                    'Content-Type': 'application/json'
-                }
-            }).then(res => res.json());
-
-            if (clerkUser) {
-                const userData = {
-                    _id: clerkUser.id,
-                    email: clerkUser.email_addresses[0].email_address,
-                    name: clerkUser.first_name + " " + clerkUser.last_name,
-                    image: clerkUser.image_url,
-                    resume: ''
-                };
-                
-                user = await User.create(userData);
-            }
-        }
+        const user = await User.findById(userId)
 
         if (!user) {
-            return res.json({success: false, message: 'User not found'});
+            return res.json({ success: false, message: 'User Not Found' })
         }
 
-        res.json({success: true, user});
+        res.json({ success: true, user })
 
     } catch (error) {
-        res.json({success: false, message: error.message});
+        res.json({ success: false, message: error.message })
     }
-};
 
-// Apply for a job
-export const applyForJob = async(req, res) => {
+}
+
+
+// Apply For Job
+export const applyForJob = async (req, res) => {
 
     const { jobId } = req.body
 
     const userId = req.auth.userId
 
     try {
-        
-        const isAlreadyApplied = await JobApplication.findOne({jobId,userId})
+
+        const isAlreadyApplied = await JobApplication.find({ jobId, userId })
 
         if (isAlreadyApplied.length > 0) {
-            return res.json({success:false, message:'Already Applied'})
+            return res.json({ success: false, message: 'Already Applied' })
         }
 
         const jobData = await Job.findById(jobId)
 
         if (!jobData) {
-            return res.json({success:false, message:'Job not found'})
+            return res.json({ success: false, message: 'Job Not Found' })
         }
 
         await JobApplication.create({
@@ -70,40 +53,42 @@ export const applyForJob = async(req, res) => {
             date: Date.now()
         })
 
-        res.json({success:true, message:'Applied Successfully'})
+        res.json({ success: true, message: 'Applied Successfully' })
 
     } catch (error) {
-        res.json({success:false, message:error.message})
+        res.json({ success: false, message: error.message })
     }
 
 }
 
-// Get user applied applications
-export const getUserJobApplications = async(req, res) => {
+// Get User Applied Applications Data
+export const getUserJobApplications = async (req, res) => {
 
     try {
-        
+
         const userId = req.auth.userId
 
-        const application = await JobApplication.find({userId}).populate('companyId', 'name email image').populate('jobId', 'title description location category level salary').exec()
+        const applications = await JobApplication.find({ userId })
+            .populate('companyId', 'name email image')
+            .populate('jobId', 'title description location category level salary')
+            .exec()
 
-        if (!application) {
-            return res.json({success:false, message:'No job application found for this user'})
+        if (!applications) {
+            return res.json({ success: false, message: 'No job applications found for this user.' })
         }
 
-        return res.json({success:true, application})
+        return res.json({ success: true, applications })
 
     } catch (error) {
-        res.json({success:false, message:error.message})
+        res.json({ success: false, message: error.message })
     }
 
 }
 
-// update user profile (resume)
-export const updateUserResume = async(req, res) => {
-
+// Update User Resume
+export const updateUserResume = async (req, res) => {
     try {
-        
+
         const userId = req.auth.userId
 
         const resumeFile = req.file
@@ -117,12 +102,11 @@ export const updateUserResume = async(req, res) => {
 
         await userData.save()
 
-        return res.json({success:true, message:'Resume Updated'})
+        return res.json({ success: true, message: 'Resume Updated' })
 
     } catch (error) {
-        
-        res.json({success:false, message:error.message})
+
+        res.json({ success: false, message: error.message })
 
     }
-
 }
