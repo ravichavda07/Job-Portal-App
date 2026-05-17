@@ -82,6 +82,7 @@ export const JobCategories = [
     "UI/UX",
     "Data Science",
     "Cybersecurity",
+    "Web Developer",
 ]
 
 export const JobLocations = [
