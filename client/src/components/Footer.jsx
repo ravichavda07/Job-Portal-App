@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const Footer = () => {
   return (
-    <div className='px-4 2xl:px-20 mx-auto flex items-center justify-between gap-4 py-3 mt-20 bg-gray-400'>
+    <div className='px-4 2xl:px-20 mx-auto flex items-center justify-between gap-4 py-3 mt-20 bg-[#C1CDD9]'>
         {/* <img width={160} src={assets.logo} alt="" /> */}
         <p className='flex-1 border-l border-gray-400 pl-4 text-sm text-gray-800 '>Copyright @Ravi Chavda | All right reserved.</p>
         <div className='flex gap-3 cursor-pointer'>

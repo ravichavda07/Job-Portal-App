@@ -66,7 +66,7 @@ const changeJobvisiblity = async (id) => {
   },[companyToken])
 
   return jobs ? jobs.length === 0 ? ( 
-  <div className='flex items-center justify-center h-[70vh]'>
+  <div className='flex items-center justify-center h-[70vh] bg-[#E6CFCA]'>
     <p className='text-xl sm:text-2xl'>No Jobs Available or Posted</p>
   </div> 
   ) : (

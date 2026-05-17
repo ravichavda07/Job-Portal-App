@@ -23,6 +23,7 @@
     "mongodb": "^7.0.0",
     "mongoose": "^8.22.0",
     "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
     "nodemon": "^3.1.11",
     "svix": "^1.84.1"
   }
